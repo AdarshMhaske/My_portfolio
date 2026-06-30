@@ -1,0 +1,167 @@
+/* ============================================================
+   style.css — Portfolio Custom Design Tokens and Keyframe Animations
+   ============================================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+:root {
+  /* Default: Crimson color scheme */
+  --primary-color: #ff2a2a;
+  --primary-color-rgb: 255, 42, 42;
+  --primary-hover: #e01b1b;
+  --primary-glow: rgba(255, 42, 42, 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* Water Fill Loading Animation (Preloader Logo) */
+@keyframes waterFill {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+.preloader-foreground-text {
+  animation: waterFill 1.6s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Lanyard ID Card Animations & Cutouts */
+.lanyard-string {
+  box-shadow: inset 1px 0 3px rgba(255, 255, 255, 0.1), 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.lanyard-badge-card {
+  transform: rotate(-3deg);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lanyard-badge-card:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Drop Bounce Animation (Badge Card drop) */
+@keyframes dropBounce {
+  0% { transform: translateY(-300px); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  65% { transform: translateY(-40px); opacity: 1; }
+  80% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(-15px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.lanyard-animated-badge {
+  opacity: 0;
+}
+
+.lanyard-animated-badge.aos-animate {
+  animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+}
+
+/* Micro-animations and custom gradients */
+.theme-transition {
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Custom styles for Tailwind customization */
+.border-primary-glow {
+  border-color: var(--primary-glow);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.hover-bg-primary-hover:hover {
+  background-color: var(--primary-hover);
+}
+
+.hover-text-primary:hover {
+  color: var(--primary-color);
+}
+
+.shadow-primary-glow {
+  box-shadow: 0 20px 45px var(--primary-glow);
+}
+
+.shadow-primary-button {
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* Text outline effect */
+.text-outline {
+  -webkit-text-stroke: 1.5px var(--primary-color);
+  color: transparent;
+}
+
+/* Torn paper divider paths */
+.divider-svg {
+  fill: var(--primary-color);
+}
+
+.divider-svg-reverse {
+  fill: #0a0a0a;
+}
+
+/* Custom Color Picker Input Styling */
+.color-picker-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.color-picker-wrapper:hover {
+  transform: scale(1.2);
+}
+
+.color-picker-input {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 34px;
+  height: 34px;
+  opacity: 0;
+  cursor: pointer;
+}
